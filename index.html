@@ -1,1 +1,796 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyJobMyanmar</title>
+  <meta name="description" content="EasyJobMyanmar - အလုပ်ရှာဖွေသူနှင့် အလုပ်ရှင်များအတွက် လွယ်ကူသော ဆက်သွယ်ရေး Platform">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ===== 1. RESET & VARIABLES ===== */
+    :root {
+      --bg-color: #0d1117;
+      --bg-secondary: #151c26;
+      --card-bg: #1b2431;
+      --text-primary: #eef1f5;
+      --text-secondary: #8b96a5;
+      --gold: #c9a13b;
+      --gold-light: #e0c05c;
+      --gold-gradient: linear-gradient(135deg, #c9a13b, #e0c05c);
+      --navy: #17233a;
+      --border-color: rgba(201, 161, 59, 0.15);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      --radius: 14px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-color);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
+    }
+
+    /* ===== 2. LANDING / ENTER PAGE ===== */
+    .landing {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(201, 161, 59, 0.08), transparent 60%),
+        var(--bg-color);
+      overflow: hidden;
+    }
+
+    .landing::before,
+    .landing::after {
+      content: '';
+      position: absolute;
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+    }
+
+    .landing::before {
+      width: 500px;
+      height: 500px;
+      top: -180px;
+      left: -180px;
+    }
+
+    .landing::after {
+      width: 350px;
+      height: 350px;
+      bottom: -150px;
+      right: -150px;
+    }
+
+    .landing-icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--gold-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--bg-color);
+      margin-bottom: 28px;
+      box-shadow: 0 0 40px rgba(201, 161, 59, 0.35);
+      position: relative;
+      z-index: 2;
+    }
+
+    .landing-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .landing-title span {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .landing-tagline {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 18px 0 44px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .enter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 46px;
+      border-radius: 50px;
+      background: var(--gold-gradient);
+      color: var(--bg-color);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      position: relative;
+      z-index: 2;
+    }
+
+    .enter-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(201, 161, 59, 0.4);
+    }
+
+    .enter-btn i {
+      transition: var(--transition);
+    }
+
+    .enter-btn:hover i {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 500px) {
+      .landing-icon {
+        width: 72px;
+        height: 72px;
+        font-size: 1.6rem;
+      }
+      .enter-btn {
+        padding: 14px 36px;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* ===== 3. MAIN SITE NAVBAR ===== */
+    .main-site {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .main-site.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(13, 17, 23, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-logo span {
+      color: var(--gold-light);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .post-job-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold-gradient);
+      color: var(--bg-color);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .post-job-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(201, 161, 59, 0.35);
+    }
+
+    /* ===== 4. SEARCH SECTION ===== */
+    .search-section {
+      padding: 50px 0 30px;
+      text-align: center;
+    }
+
+    .search-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 10px;
+    }
+
+    .search-section h2 span {
+      color: var(--gold-light);
+    }
+
+    .search-section p {
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+    }
+
+    .search-box {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      padding: 6px;
+      align-items: center;
+    }
+
+    .search-box input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      padding: 12px 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-secondary);
+    }
+
+    .search-box button {
+      background: var(--gold-gradient);
+      border: none;
+      color: var(--bg-color);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ===== 5. CATEGORY SECTION (compact pill tags) ===== */
+    .category-section {
+      padding: 26px 0 70px;
+    }
+
+    .category-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .category-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 9px 16px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.85rem;
+    }
+
+    .category-card:hover,
+    .category-card.selected {
+      border-color: var(--gold);
+      background: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .category-card i {
+      color: var(--gold-light);
+      font-size: 0.9rem;
+    }
+
+    .category-card .cat-name {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .category-card .cat-tag {
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+    }
+
+    /* ===== 6. JOB LISTINGS ===== */
+    .jobs-section {
+      padding: 20px 0 100px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      margin-bottom: 36px;
+    }
+
+    .jobs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .job-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: var(--transition);
+    }
+
+    .job-card:hover {
+      border-color: var(--gold);
+    }
+
+    .job-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .job-stars {
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .job-card p.job-text {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      margin: 10px 0;
+      white-space: pre-wrap;
+    }
+
+    .job-meta {
+      display: flex;
+      gap: 16px;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      margin-top: 14px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 12px;
+    }
+
+    .no-jobs {
+      text-align: center;
+      color: var(--text-secondary);
+      padding: 40px 0;
+    }
+
+    /* ===== 7. POST JOB MODAL ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      max-width: 480px;
+      width: 100%;
+      padding: 28px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-box h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 6px;
+    }
+
+    .modal-box .modal-sub {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+
+    .modal-box label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      margin-top: 16px;
+    }
+
+    .modal-box textarea {
+      width: 100%;
+      min-height: 120px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-primary);
+      padding: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      resize: vertical;
+    }
+
+    .modal-box select {
+      width: 100%;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-primary);
+      padding: 12px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .modal-actions button {
+      flex: 1;
+      padding: 13px;
+      border-radius: 50px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .modal-cancel {
+      background: transparent;
+      border: 1px solid var(--border-color) !important;
+      color: var(--text-primary);
+    }
+
+    .modal-submit {
+      background: var(--gold-gradient);
+      color: var(--bg-color);
+    }
+
+    /* ===== 8. FOOTER ===== */
+    .footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .footer .footer-logo span {
+      color: var(--gold-light);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== LANDING / ENTER PAGE ===== -->
+  <section class="landing" id="landing">
+    <div class="landing-icon">
+      <i class="fa-solid fa-briefcase"></i>
+    </div>
+    <h1 class="landing-title">Easy<span>Job</span>Myanmar</h1>
+    <p class="landing-tagline">
+      အလုပ်ရှင်နှင့် အလုပ်ရှာဖွေသူများ လွယ်ကူချောမွေ့စွာ ဆက်သွယ်နိုင်သော Platform
+    </p>
+    <button class="enter-btn" id="enterBtn">
+      Enter <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </section>
+
+  <!-- ===== MAIN SITE ===== -->
+  <div class="main-site" id="mainSite">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-logo">Easy<span>Job</span>Myanmar</div>
+        <div class="nav-actions">
+          <button class="post-job-btn" id="postJobBtn">
+            <i class="fa-solid fa-plus"></i> Post Job
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Search -->
+    <section class="search-section">
+      <div class="container">
+        <h2>အလုပ်ကောင်းတွေကို <span>လွယ်ကူစွာ</span> ရှာဖွေပါ</h2>
+        <p>Category ကနေရော #hashtag ကနေရော ရှာဖွေနိုင်ပါတယ်</p>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="ဥပမာ - bar, driver, #restaurant...">
+          <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories (compact pill tags) -->
+    <section class="category-section">
+      <div class="container">
+        <div class="category-grid" id="categoryGrid">
+          <div class="category-card" data-tag="restaurant"><i class="fa-solid fa-utensils"></i><span class="cat-name">Restaurant</span><span class="cat-tag">#restaurant</span></div>
+          <div class="category-card" data-tag="cafe"><i class="fa-solid fa-mug-saucer"></i><span class="cat-name">Cafe</span><span class="cat-tag">#cafe</span></div>
+          <div class="category-card" data-tag="bar"><i class="fa-solid fa-martini-glass"></i><span class="cat-name">Bar & Nightlife</span><span class="cat-tag">#bar</span></div>
+          <div class="category-card" data-tag="hotel"><i class="fa-solid fa-hotel"></i><span class="cat-name">Hotel</span><span class="cat-tag">#hotel</span></div>
+          <div class="category-card" data-tag="construction"><i class="fa-solid fa-helmet-safety"></i><span class="cat-name">Construction</span><span class="cat-tag">#construction</span></div>
+          <div class="category-card" data-tag="it"><i class="fa-solid fa-laptop-code"></i><span class="cat-name">IT & Software</span><span class="cat-tag">#it</span></div>
+          <div class="category-card" data-tag="healthcare"><i class="fa-solid fa-stethoscope"></i><span class="cat-name">Healthcare</span><span class="cat-tag">#healthcare</span></div>
+          <div class="category-card" data-tag="education"><i class="fa-solid fa-chalkboard-user"></i><span class="cat-name">Education</span><span class="cat-tag">#education</span></div>
+          <div class="category-card" data-tag="retail"><i class="fa-solid fa-bag-shopping"></i><span class="cat-name">Retail & Sales</span><span class="cat-tag">#retail</span></div>
+          <div class="category-card" data-tag="delivery"><i class="fa-solid fa-truck-fast"></i><span class="cat-name">Delivery</span><span class="cat-tag">#delivery</span></div>
+          <div class="category-card" data-tag="beauty"><i class="fa-solid fa-scissors"></i><span class="cat-name">Beauty & Salon</span><span class="cat-tag">#beauty</span></div>
+          <div class="category-card" data-tag="driver"><i class="fa-solid fa-car"></i><span class="cat-name">Driver</span><span class="cat-tag">#driver</span></div>
+          <div class="category-card" data-tag="security"><i class="fa-solid fa-shield-halved"></i><span class="cat-name">Security</span><span class="cat-tag">#security</span></div>
+          <div class="category-card" data-tag="cleaning"><i class="fa-solid fa-broom"></i><span class="cat-name">Cleaning</span><span class="cat-tag">#cleaning</span></div>
+          <div class="category-card" data-tag="factory"><i class="fa-solid fa-industry"></i><span class="cat-name">Factory</span><span class="cat-tag">#factory</span></div>
+          <div class="category-card" data-tag="marketing"><i class="fa-solid fa-bullhorn"></i><span class="cat-name">Marketing</span><span class="cat-tag">#marketing</span></div>
+          <div class="category-card" data-tag="design"><i class="fa-solid fa-palette"></i><span class="cat-name">Design</span><span class="cat-tag">#design</span></div>
+          <div class="category-card" data-tag="finance"><i class="fa-solid fa-sack-dollar"></i><span class="cat-name">Finance</span><span class="cat-tag">#finance</span></div>
+          <div class="category-card" data-tag="customerservice"><i class="fa-solid fa-headset"></i><span class="cat-name">Customer Service</span><span class="cat-tag">#customerservice</span></div>
+          <div class="category-card" data-tag="engineering"><i class="fa-solid fa-gears"></i><span class="cat-name">Engineering</span><span class="cat-tag">#engineering</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== JOB LISTINGS ===== -->
+    <section class="jobs-section" id="jobsSection">
+      <div class="container">
+        <h3 class="section-title">လက်ရှိ အလုပ်ကြေငြာများ</h3>
+        <div class="jobs-list" id="jobsList"></div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-logo">Easy<span>Job</span>Myanmar</div>
+        <p>&copy; 2026 EasyJobMyanmar. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ===== POST JOB MODAL ===== -->
+  <div class="modal-overlay" id="postModal">
+    <div class="modal-box">
+      <h3>အလုပ်ကြေငြာ တင်ရန်</h3>
+      <p class="modal-sub">Facebook post ပုံစံအတိုင်း ရေးပါ — Category #hashtag ထည့်ဖို့ မမေ့ပါနဲ့</p>
+
+      <label>အလုပ်ကြေငြာ စာသား</label>
+      <textarea id="postText" placeholder="ဥပမာ - Bar ဝန်ထမ်းများ အလျင်အမြန်လိုအပ်ပါသည်။ လစာကောင်းပါသည်။ #bar #nightlife"></textarea>
+
+      <label>အလုပ်အဆင့် (Star Rating အတွက်)</label>
+      <select id="postLevel">
+        <option value="2">Entry Level (⭐⭐)</option>
+        <option value="3">Mid Level (⭐⭐⭐)</option>
+        <option value="4">Senior Level (⭐⭐⭐⭐)</option>
+        <option value="5">Executive / High Salary (⭐⭐⭐⭐⭐)</option>
+      </select>
+
+      <div class="modal-actions">
+        <button class="modal-cancel" id="modalCancel">ပယ်ဖျက်</button>
+        <button class="modal-submit" id="modalSubmit">တင်မည်</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Enter Button =====
+    document.getElementById('enterBtn').addEventListener('click', function () {
+      document.getElementById('landing').style.display = 'none';
+      document.getElementById('mainSite').classList.add('active');
+      renderJobs();
+    });
+
+    // ===== Category Filter =====
+    let activeCategory = null;
+    document.querySelectorAll('.category-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        const tag = card.getAttribute('data-tag');
+        if (activeCategory === tag) {
+          activeCategory = null;
+          document.querySelectorAll('.category-card').forEach(c => c.classList.remove('selected'));
+        } else {
+          activeCategory = tag;
+          document.querySelectorAll('.category-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+        }
+        renderJobs();
+      });
+    });
+
+    // ===== Search =====
+    document.getElementById('searchBtn').addEventListener('click', doSearch);
+    document.getElementById('searchInput').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') doSearch();
+    });
+    function doSearch() {
+      const val = document.getElementById('searchInput').value.trim().toLowerCase().replace('#', '');
+      activeCategory = val || null;
+      document.querySelectorAll('.category-card').forEach(c => c.classList.remove('selected'));
+      if (val) {
+        const match = document.querySelector('.category-card[data-tag="' + val + '"]');
+        if (match) match.classList.add('selected');
+      }
+      renderJobs();
+    }
+
+    // ===== Post Job Modal =====
+    document.getElementById('postJobBtn').addEventListener('click', function () {
+      document.getElementById('postModal').classList.add('active');
+    });
+    document.getElementById('modalCancel').addEventListener('click', function () {
+      document.getElementById('postModal').classList.remove('active');
+    });
+    document.getElementById('modalSubmit').addEventListener('click', function () {
+      const text = document.getElementById('postText').value.trim();
+      const stars = parseInt(document.getElementById('postLevel').value);
+      if (!text) return;
+      const hashtags = (text.match(/#[\w]+/g) || []).map(h => h.toLowerCase());
+      const jobs = getJobs();
+      jobs.unshift({
+        id: Date.now(),
+        text: text,
+        stars: stars,
+        hashtags: hashtags,
+        date: new Date().toLocaleDateString()
+      });
+      saveJobs(jobs);
+      document.getElementById('postText').value = '';
+      document.getElementById('postModal').classList.remove('active');
+      renderJobs();
+    });
+
+    // ===== Storage =====
+    function getJobs() {
+      const stored = localStorage.getItem('easyjob_posts');
+      if (stored) return JSON.parse(stored);
+      return [
+        { id: 1, text: "VIP Lounge အတွက် Bartender များ အလျင်အမြန် လိုအပ်ပါသည်။ လစာကောင်းပါသည်။ #bar #nightlife", stars: 5, hashtags: ["#bar", "#nightlife"], date: "2026-09-01" },
+        { id: 2, text: "Senior Software Engineer လိုအပ်ပါသည်။ Remote OK. #it #engineering", stars: 5, hashtags: ["#it", "#engineering"], date: "2026-09-05" },
+        { id: 3, text: "Cafe crew member လိုအပ်ပါသည်။ #cafe", stars: 2, hashtags: ["#cafe"], date: "2026-09-10" },
+        { id: 4, text: "Hotel Receptionist ရှာနေပါသည်။ English ကျွမ်းကျင်ရမည်။ #hotel", stars: 3, hashtags: ["#hotel"], date: "2026-09-12" },
+        { id: 5, text: "Delivery Rider များ ချက်ချင်း လိုအပ်ပါသည်။ #delivery", stars: 2, hashtags: ["#delivery"], date: "2026-09-14" }
+      ];
+    }
+    function saveJobs(jobs) {
+      localStorage.setItem('easyjob_posts', JSON.stringify(jobs));
+    }
+
+    // ===== Render Jobs =====
+    function renderJobs() {
+      const jobs = getJobs();
+      const filtered = activeCategory
+        ? jobs.filter(j => j.hashtags.some(h => h.replace('#', '') === activeCategory))
+        : jobs;
+      const list = document.getElementById('jobsList');
+      if (filtered.length === 0) {
+        list.innerHTML = '<p class="no-jobs">ဒီ category မှာ အလုပ်ကြေငြာ မရှိသေးပါ</p>';
+        return;
+      }
+      list.innerHTML = filtered.map(function (j) {
+        return '<div class="job-card">' +
+          '<div class="job-card-header">' +
+            '<div class="job-stars">' + '★'.repeat(j.stars) + '☆'.repeat(5 - j.stars) + '</div>' +
+          '</div>' +
+          '<p class="job-text">' + j.text.replace(/#[\w]+/g, m => '<b style="color:var(--gold-light)">' + m + '</b>') + '</p>' +
+          '<div class="job-meta"><span><i class="fa-regular fa-calendar"></i> ' + j.date + '</span></div>' +
+        '</div>';
+      }).join('');
+    }
+
+    // ===== Navbar shadow on scroll =====
+    window.addEventListener('scroll', function () {
+      const nav = document.querySelector('.navbar');
+      if (nav) {
+        if (window.scrollY > 30) nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+        else nav.style.boxShadow = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
