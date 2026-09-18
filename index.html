@@ -386,6 +386,207 @@
       font-size: 0.75rem;
       color: var(--gold-light);
       font-weight: 500;
+    }    /* ===== 6. JOB LISTINGS ===== */
+    .jobs-section {
+      padding: 20px 0 100px;
+    }
+
+    .jobs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .job-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: var(--transition);
+    }
+
+    .job-card:hover {
+      border-color: var(--gold);
+    }
+
+    .job-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .job-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .job-stars {
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .job-cat-badge {
+      display: inline-block;
+      background: var(--navy);
+      border: 1px solid var(--border-color);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .job-card p.job-text {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      margin: 10px 0;
+      white-space: pre-wrap;
+    }
+
+    .job-hashtags span {
+      color: var(--gold-light);
+      margin-right: 10px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .job-meta {
+      display: flex;
+      gap: 16px;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      margin-top: 14px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 12px;
+    }
+
+    .no-jobs {
+      text-align: center;
+      color: var(--text-secondary);
+      padding: 40px 0;
+    }
+
+    /* ===== 7. POST JOB MODAL ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      max-width: 480px;
+      width: 100%;
+      padding: 28px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-box h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 6px;
+    }
+
+    .modal-box .modal-sub {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+
+    .modal-box label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      margin-top: 16px;
+    }
+
+    .modal-box textarea {
+      width: 100%;
+      min-height: 120px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-primary);
+      padding: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      resize: vertical;
+    }
+
+    .modal-box select {
+      width: 100%;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-primary);
+      padding: 12px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .modal-actions button {
+      flex: 1;
+      padding: 13px;
+      border-radius: 50px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .modal-cancel {
+      background: transparent;
+      border: 1px solid var(--border-color) !important;
+      color: var(--text-primary);
+    }
+
+    .modal-submit {
+      background: var(--gold-gradient);
+      color: var(--bg-color);
+    }
+
+    /* ===== 8. FOOTER ===== */
+    .footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .footer .footer-logo span {
+      color: var(--gold-light);
     }
   </style>
 </head>
