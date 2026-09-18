@@ -405,7 +405,145 @@
     </button>
   </section>
 
-  <!-- နောက်ပိုင်း Part 2 မှာ Main Site (Job Category + Search) ကို ထည့်ပါမယ် -->
+    <!-- ===== MAIN SITE ===== -->
+  <div class="main-site" id="mainSite">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-logo">Easy<span>Job</span>Myanmar</div>
+        <div class="nav-actions">
+          <button class="post-job-btn" id="postJobBtn">
+            <i class="fa-solid fa-plus"></i> Post Job
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Search -->
+    <section class="search-section">
+      <div class="container">
+        <h2>အလုပ်ကောင်းတွေကို <span>လွယ်ကူစွာ</span> ရှာဖွေပါ</h2>
+        <p>Category ကနေရော #hashtag ကနေရော ရှာဖွေနိုင်ပါတယ်</p>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="ဥပမာ - bar, driver, #restaurant...">
+          <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="category-section">
+      <div class="container">
+        <h3 class="section-title">အလုပ်အမျိုးအစားများ</h3>
+        <div class="category-grid" id="categoryGrid">
+          <div class="category-card" data-tag="restaurant">
+            <div class="cat-icon"><i class="fa-solid fa-utensils"></i></div>
+            <h4>Restaurant</h4>
+            <span class="cat-tag">#restaurant</span>
+          </div>
+          <div class="category-card" data-tag="cafe">
+            <div class="cat-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+            <h4>Cafe</h4>
+            <span class="cat-tag">#cafe</span>
+          </div>
+          <div class="category-card" data-tag="bar">
+            <div class="cat-icon"><i class="fa-solid fa-martini-glass"></i></div>
+            <h4>Bar & Nightlife</h4>
+            <span class="cat-tag">#bar</span>
+          </div>
+          <div class="category-card" data-tag="hotel">
+            <div class="cat-icon"><i class="fa-solid fa-hotel"></i></div>
+            <h4>Hotel</h4>
+            <span class="cat-tag">#hotel</span>
+          </div>
+          <div class="category-card" data-tag="construction">
+            <div class="cat-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+            <h4>Construction</h4>
+            <span class="cat-tag">#construction</span>
+          </div>
+          <div class="category-card" data-tag="it">
+            <div class="cat-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <h4>IT & Software</h4>
+            <span class="cat-tag">#it</span>
+          </div>
+          <div class="category-card" data-tag="healthcare">
+            <div class="cat-icon"><i class="fa-solid fa-stethoscope"></i></div>
+            <h4>Healthcare</h4>
+            <span class="cat-tag">#healthcare</span>
+          </div>
+          <div class="category-card" data-tag="education">
+            <div class="cat-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <h4>Education</h4>
+            <span class="cat-tag">#education</span>
+          </div>
+          <div class="category-card" data-tag="retail">
+            <div class="cat-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+            <h4>Retail & Sales</h4>
+            <span class="cat-tag">#retail</span>
+          </div>
+          <div class="category-card" data-tag="delivery">
+            <div class="cat-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <h4>Delivery</h4>
+            <span class="cat-tag">#delivery</span>
+          </div>
+          <div class="category-card" data-tag="beauty">
+            <div class="cat-icon"><i class="fa-solid fa-scissors"></i></div>
+            <h4>Beauty & Salon</h4>
+            <span class="cat-tag">#beauty</span>
+          </div>
+          <div class="category-card" data-tag="driver">
+            <div class="cat-icon"><i class="fa-solid fa-car"></i></div>
+            <h4>Driver</h4>
+            <span class="cat-tag">#driver</span>
+          </div>
+          <div class="category-card" data-tag="security">
+            <div class="cat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4>Security</h4>
+            <span class="cat-tag">#security</span>
+          </div>
+          <div class="category-card" data-tag="cleaning">
+            <div class="cat-icon"><i class="fa-solid fa-broom"></i></div>
+            <h4>Cleaning</h4>
+            <span class="cat-tag">#cleaning</span>
+          </div>
+          <div class="category-card" data-tag="factory">
+            <div class="cat-icon"><i class="fa-solid fa-industry"></i></div>
+            <h4>Factory</h4>
+            <span class="cat-tag">#factory</span>
+          </div>
+          <div class="category-card" data-tag="marketing">
+            <div class="cat-icon"><i class="fa-solid fa-bullhorn"></i></div>
+            <h4>Marketing</h4>
+            <span class="cat-tag">#marketing</span>
+          </div>
+          <div class="category-card" data-tag="design">
+            <div class="cat-icon"><i class="fa-solid fa-palette"></i></div>
+            <h4>Design</h4>
+            <span class="cat-tag">#design</span>
+          </div>
+          <div class="category-card" data-tag="finance">
+            <div class="cat-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+            <h4>Finance</h4>
+            <span class="cat-tag">#finance</span>
+          </div>
+          <div class="category-card" data-tag="customerservice">
+            <div class="cat-icon"><i class="fa-solid fa-headset"></i></div>
+            <h4>Customer Service</h4>
+            <span class="cat-tag">#customerservice</span>
+          </div>
+          <div class="category-card" data-tag="engineering">
+            <div class="cat-icon"><i class="fa-solid fa-gears"></i></div>
+            <h4>Engineering</h4>
+            <span class="cat-tag">#engineering</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- နောက်ပိုင်း Part 3 မှာ Job Listings + Star Rating ကို ထည့်ပါမယ် -->
+
+  </div>
 
 </body>
 </html>
